@@ -1,4 +1,13 @@
 //https://learn.adafruit.com/system/assets/assets/000/000/570/medium800/temperature_thermistor_bb.png?1396764132
+
+//Version 0.1
+// Roni Segoly roni@yozma.net
+// Date       : 12/12/15
+// main code for reading moisture sensors 
+// The code outputs data read for various sensors through Serial port in json format 
+// I2C - Messages are also displayed on 16X2 LCD screen https://ryanteck.uk/displays/11-16x2-character-i2c-lcd-display-0635648607139.html?variant=751997007
+// PH sensor http://dfrobot.com/wiki/index.php/Analog_pH_Meter_Pro_SKU:SEN0169
+
 #include <SPI.h>
 #include <SD.h>
 #include <Wire.h>  // Comes with Arduino IDE
@@ -27,13 +36,10 @@ void setup()
 {
   String buffer;
   Serial.begin(9600);
+  Serial.println("Moisture code");
   y.init_sd();
-  //  y.write_to_sd("d.txt","12.5");
   lcd.begin(16, 2);  // initialize the lcd for 16 chars 2 lines, turn on backlight
-  // Delay for sensors to warm p, not sure it's needed
-  //y.read_sd_value("d.txt",buffer);
-  lcd.begin(16,2);   // initialize the lcd for 16 chars 2 lines, turn on backlight
-   Serial.println(buffer);
+  Serial.println(buffer);
   delay(5000);
 }
  
